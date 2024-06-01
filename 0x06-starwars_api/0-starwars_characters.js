@@ -4,7 +4,6 @@ const request = require('request');
 const requestPromise = util.promisify(request);
 
 async function fetchAndPrintCharacter (characterUrl) {
-  console.log(characterUrl);
   const response = await requestPromise(characterUrl, { json: true });
   if (response.statusCode !== 200) {
     console.error(`Unexpected status code ${response.statusCode}`);
@@ -21,7 +20,6 @@ async function processCharacterUrls (characterUrls) {
 
 function fetchMovieCharacters (movieId) {
   const url = `https://swapi-api.alx-tools.com/api/films/${movieId}`;
-  console.log(url);
 
   request(url, { json: true }, (err, res, body) => {
     if (err) {
