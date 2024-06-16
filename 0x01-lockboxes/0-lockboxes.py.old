@@ -9,15 +9,17 @@ def canUnlockAll(boxes):
     lock boxes algo
     """
     n = len(boxes)
-    visited = [False] * n
+    visited = set()
     stack = [0]
-    holder = []
 
     while stack:
         checker = stack.pop()
-        holder.append(checker)
-        visited[checker] = True
+        visited.add(checker)
         for key in boxes[checker]:
-            if key < n and key not in stack and key not in holder:
+            if key < n and key not in visited:
                 stack.append(key)
-    return all(visited)
+
+    if len(visited) == n:
+        return True
+    else:
+        return False
