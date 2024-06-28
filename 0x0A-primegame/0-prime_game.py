@@ -10,7 +10,7 @@ def isWinner(x, nums):
     """
     if x <= 0 or not nums:
         return None
-    
+
     max_n = max(nums)
 
     sieve = [True] * (max_n + 1)
@@ -19,7 +19,7 @@ def isWinner(x, nums):
         if sieve[p]:
             for i in range(p * p, max_n + 1, p):
                 sieve[i] = False
-        
+
     prime_count = [0] * (max_n + 1)
     count = 0
     for i in range(2, max_n + 1):
@@ -35,7 +35,7 @@ def isWinner(x, nums):
             maria += 1
         else:
             ben += 1
-    
+
     if maria > ben:
         return "Maria"
     elif ben > maria:
